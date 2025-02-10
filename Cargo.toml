@@ -1,0 +1,10 @@
+[package]
+name = "RustyPlayer"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+egui = "0.30.0"
+rfd = "0.15.2"
+rodio = "0.20.1"
+eframe = "0.24"
