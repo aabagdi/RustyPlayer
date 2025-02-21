@@ -3,7 +3,7 @@ use rodio::{Decoder, OutputStream, Sink, Source};
 use std::fs::File;
 use std::io::BufReader;
 use std::path::PathBuf;
-use std::sync::{Arc, Mutex}; // got some help from the Rust docs and Claude 3.5 with these
+use std::sync::{Arc, Mutex}; // got some help from the Rust docs and Claude 3.5 with these, these are used to manage ownership fo data and the prevention of data races, respectively.
 use std::time::{Duration, Instant};
 
 struct AudioPlayer {
@@ -251,12 +251,11 @@ impl eframe::App for AudioPlayer {
                     self.play_pause();
                 }
 
-                let repeat_button = egui::Button::new("Repeat")
-                    .fill(if self.repeat {
-                        egui::Color32::from_rgb(100, 150, 255) 
-                    } else {
-                        ui.style().visuals.widgets.inactive.bg_fill
-                    });
+                let repeat_button = egui::Button::new("Repeat").fill(if self.repeat {
+                    egui::Color32::from_rgb(100, 150, 255)
+                } else {
+                    ui.style().visuals.widgets.inactive.bg_fill
+                });
 
                 if ui.add(repeat_button).clicked() {
                     self.repeat = !self.repeat;
