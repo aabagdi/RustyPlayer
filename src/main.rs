@@ -4,7 +4,7 @@ use rodio::{Decoder, OutputStream, Sink, Source};
 use std::fs::File;
 use std::io::BufReader;
 use std::path::{Path, PathBuf};
-use std::sync::{Arc, Mutex};
+use std::sync::{Arc, Mutex}; // got some help with Arc from Claude 3.7
 use std::time::{Duration, Instant};
 use symphonia::core::formats::FormatOptions;
 use symphonia::core::io::MediaSourceStream;
